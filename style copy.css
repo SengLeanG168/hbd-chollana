@@ -1,0 +1,347 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Arial", sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#matrixCanvas {
+  z-index: 1;
+}
+
+#fireworksCanvas {
+  z-index: 10;
+  pointer-events: none;
+}
+
+#countdown {
+  display: none;
+  font-size: 120px;
+  color: #ff00d9;
+  font-weight: bold;
+  z-index: 100;
+  position: absolute;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* ស្ទីលអត្ថបទទាំងអស់ឱ្យនៅចំកណ្តាល */
+#happy-text, #birthday-text, #to-text, #chollana-text, #heart-shape {
+  display: none;
+  position: absolute;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+  animation: zoomIn 1s ease-out forwards;
+}
+
+#happy-text { font-size: 80px; color: #ff3366; text-shadow: 0 0 20px white; }
+#birthday-text { font-size: 80px; color: #ffffff; text-shadow: 0 0 20px #ff00d9; }
+#to-text { font-size: 60px; color: #ffd700; text-shadow: 0 0 20px #ffcc00; animation-duration: 0.8s; }
+#chollana-text { font-size: 70px; color: #00ffff; text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff; width: 100%; }
+#heart-shape { font-size: 150px; color: red; filter: drop-shadow(0 0 30px red); animation: zoomIn 1s ease-out forwards, heartbeat 1s infinite alternate; }
+
+@keyframes zoomIn {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* ស្ទីលសម្រាប់រូបភាព Edit របស់អ្នក */
+#sticker-hbd {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  width: 280px;
+  height: auto;
+  border-radius: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-5deg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 30px #ff00d9;
+  animation: bounceInSticker 1s ease-out forwards;
+}
+
+@keyframes bounceInSticker {
+  0% { transform: translate(-50%, -50%) scale(0) rotate(-30deg); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.1) rotate(5deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(-5deg); }
+}
+
+/* --- វគ្គទី២ ផ្ទាំងនំខេក --- */
+#welcome-screen {
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  animation: fadeIn 1.5s ease-in forwards;
+  overflow: hidden;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.moon { position: absolute; top: 30px; right: 30px; font-size: 60px; filter: drop-shadow(0 0 15px #ffff99); }
+.stars { position: absolute; top: 50px; left: 30px; font-size: 30px; animation: twinkle 2s infinite alternate; }
+@keyframes twinkle { 0% { opacity: 0.2; } 100% { opacity: 1; filter: drop-shadow(0 0 10px white); } }
+
+.floating-heart { position: absolute; bottom: -50px; opacity: 0; animation: floatUp 3s ease-in-out forwards; }
+.h1 { left: 20%; animation-delay: 0.5s; font-size: 35px; }
+.h2 { left: 75%; animation-delay: 1s; font-size: 45px; }
+.h3 { left: 50%; animation-delay: 1.5s; font-size: 30px; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-80vh) scale(1.2) rotate(20deg); opacity: 0; }
+}
+
+.sticker-happy { font-size: 25px; font-weight: bold; color: #ff3333; margin-bottom: 20px; }
+.cake-container { font-size: 100px; margin-top: 10px; position: relative; animation: cakebeat 2s infinite; }
+.age-candles { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); font-size: 40px; font-weight: bold; color: #ffcc00; text-shadow: 0 0 10px red; }
+@keyframes cakebeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+.wish-title { font-size: 24px; color: #ff3366; margin-top: 20px; font-weight: bold; text-shadow: 0 0 10px #ff3366; }
+.wish-desc { color: #ffb3d9; padding: 0 20px; font-size: 16px; line-height: 1.5; text-shadow: 0 0 5px #ffb3d9; }
+
+
+
+
+/* ========================================= */
+/* --- ស្ទីលនំខេក Custom ជាមួយនឹងទៀនលេខ ២០ --- */
+/* ========================================= */
+
+.my-custom-cake {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  animation: cakebeat 2s infinite; /* ធ្វើឱ្យនំខេកលោតតិចៗ */
+}
+
+/* ស្រទាប់នំខេកនីមួយៗ */
+.cake-tier {
+  border-radius: 8px;
+  box-shadow: inset 0 -5px 10px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.top-tier { 
+  width: 100px; 
+  height: 40px; 
+  background: #ffb3d9; /* ពណ៌ផ្កាឈូកស្រាល */
+  z-index: 3; 
+}
+
+.middle-tier { 
+  width: 140px; 
+  height: 50px; 
+  background: #ff66a3; /* ពណ៌ផ្កាឈូករាងចាស់បន្តិច */
+  z-index: 2; 
+  margin-top: -10px; /* ឱ្យវាត្រួតស៊ីគ្នាបន្តិច */
+}
+
+.bottom-tier { 
+  width: 180px; 
+  height: 60px; 
+  background: #ff3385; /* ពណ៌ផ្កាឈូកចាស់ */
+  z-index: 1; 
+  margin-top: -10px; 
+}
+
+/* ចានទ្រនំខេកពណ៌ស បញ្ចេញពន្លឺ */
+.plate { 
+  width: 220px; 
+  height: 10px; 
+  background: #ffffff; 
+  border-radius: 50%; 
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.6); 
+  margin-top: 5px; 
+}
+
+/* --- ស្ទីលទៀនលេខ ២០ --- */
+.candles-20 {
+  display: flex;
+  gap: 5px;
+  margin-bottom: -15px; /* ទាញឱ្យលេខកប់ចូលក្នុងនំខេកជាន់លើបន្តិច */
+  z-index: 4;
+}
+
+.candle {
+  position: relative;
+  font-size: 65px; /* ទំហំលេខ ២០ */
+  font-weight: bold;
+  color: #ffffff;
+  /* ធ្វើឱ្យលេខមានគែមពណ៌ក្រហម/ផ្កាឈូកចាស់ */
+  text-shadow: 2px 2px 0px #ff0066, -2px -2px 0px #ff0066, 2px -2px 0px #ff0066, -2px 2px 0px #ff0066, 0 0 15px rgba(255,255,255,0.5);
+}
+
+/* អណ្តាតភ្លើងទៀន */
+.flame {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 25px;
+  background: #ffcc00;
+  border-radius: 50% 50% 20% 20%;
+  box-shadow: 0 0 15px #ffcc00, 0 0 30px #ff9900; /* ពន្លឺភ្លើង */
+  animation: flicker 0.5s infinite alternate; /* ធ្វើឱ្យភ្លើងព្រិចៗ */
+}
+
+/* Animation ភ្លើងទៀនព្រិចៗ */
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+  100% { transform: translateX(-50%) scale(1.1); opacity: 1; box-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900; }
+}
+
+
+
+/* ========================================= */
+/* --- វគ្គទី៣ ស្ទីលសៀវភៅ 3D (Flip Book) --- */
+/* ========================================= */
+
+#book-screen {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fce4ec; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  animation: fadeIn 2s ease-in forwards;
+  overflow: hidden; /* ការពារកុំឱ្យលៀនចេញក្រៅអេក្រង់ទូរស័ព្ទ */
+}
+
+.book-container {
+  perspective: 1500px; 
+}
+
+.book {
+  position: relative;
+  /* កំណត់ទំហំសៀវភៅឱ្យសមនឹងទូរស័ព្ទដៃ */
+  width: 160px; 
+  height: 250px;
+  transform-style: preserve-3d;
+  box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
+  border-radius: 5px 15px 15px 5px;
+  
+  /* ចលនារំកិលយ៉ាងរលូន */
+  transition: transform 1s ease-in-out; 
+  /* ពេលបិទ គឺនៅចំកណ្តាលពេញលេញ */
+  transform: translateX(0); 
+}
+
+/* ពេលបើក វានឹងរំកិលខ្លួនទៅស្តាំបន្តិច ដើម្បីរក្សាតុល្យភាពសៀវភៅទាំងមូលឱ្យនៅចំកណ្តាល */
+.book.is-open {
+  transform: translateX(50%);
+}
+
+/* សម្រាប់កុំព្យូទ័រ ឬ iPad វានឹងពង្រីកសៀវភៅឱ្យធំវិញដោយស្វ័យប្រវត្តិ */
+@media (min-width: 600px) {
+  .book { width: 300px; height: 400px; }
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: left center; 
+  transform-style: preserve-3d;
+  transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1); 
+  cursor: pointer;
+  border-radius: 5px 15px 15px 5px;
+}
+
+#page-1 { z-index: 3; }
+#page-2 { z-index: 2; }
+#page-3 { z-index: 1; }
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #fffaf0; 
+  border: 1px solid #e0c0c0;
+  border-radius: 5px 15px 15px 5px;
+  text-align: center;
+}
+
+.back {
+  transform: rotateY(180deg); 
+  border-radius: 15px 5px 5px 15px;
+}
+
+.cover-front, .cover-back {
+  background: linear-gradient(135deg, #ff6699, #ff3366);
+  color: white;
+  border: 2px solid #fff;
+}
+
+/* តម្រូវទំហំអក្សរឱ្យសមនឹងទូរស័ព្ទ */
+.cover-front h2, .cover-back h2 { font-size: 20px; text-shadow: 2px 2px 5px rgba(0,0,0,0.3); margin-bottom: 10px; }
+.cover-front p, .cover-back p { font-size: 14px; }
+.romantic-text { color: #ff3366; font-size: 16px; font-family: 'Georgia', serif; line-height: 1.5; }
+
+@media (min-width: 600px) {
+  .cover-front h2, .cover-back h2 { font-size: 28px; }
+  .romantic-text { font-size: 22px; }
+  .front, .back { padding: 20px; }
+}
+
+.page-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.page.flipped {
+  transform: rotateY(-180deg);
+}

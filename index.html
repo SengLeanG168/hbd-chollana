@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Leak Chollana</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="start-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; cursor: pointer;">
+    <h2 style="color: #ff3366; font-size: 28px; text-shadow: 0 0 10px #ff3366; text-align: center;">
+      👉 សូម Touch លើអេក្រង់ 👈
+    </h2>
+    <p style="color: #ffb3d9; font-size: 16px; margin-top: 10px;">(ដើម្បីបើកកាដូ Surprise 🎁)</p>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <canvas id="matrixCanvas"></canvas>
+  <canvas id="fireworksCanvas"></canvas>
+
+  <div id="countdown">3</div>
+
+  <div id="happy-text" style="display: none">Happy</div>
+  <div id="birthday-text" style="display: none">Birthday</div>
+  <div id="to-text" style="display: none">TO</div>
+  <div id="chollana-text" style="display: none">MY GIRLFRIEND</div>
+  <div id="heart-shape" style="display: none">❤️</div>
+
+  <img id="sticker-hbd" src="https://e7.pngegg.com/pngimages/766/116/png-clipart-happy-birthday-illustration-birthday-cake-wish-greeting-card-letter-happy-birthday-text-happy-birthday-to-you-thumbnail.png" alt="Happy Birthday" style="display: none" />
+
+  <div id="welcome-screen" style="display: none">
+    <div class="moon">🌙</div>
+    <div class="stars">✨ 🌟 ✨ ✨</div>
+
+    <div class="floating-heart h1">💖</div>
+    <div class="floating-heart h2">💗</div>
+    <div class="floating-heart h3">💕</div>
+
+    <h1 class="sticker-happy">🎉 Surprise! 🎉</h1>
+
+    <div class="my-custom-cake">
+      <div class="candles-20">
+        <div class="candle"><div class="flame"></div>2</div>
+        <div class="candle"><div class="flame"></div>1</div>
+      </div>
+      <div class="cake-tier top-tier"></div>
+      <div class="cake-tier middle-tier"></div>
+      <div class="cake-tier bottom-tier"></div>
+      <div class="plate"></div>
+    </div>
+
+    <p style="font-size: 24px; color: #ff3366; margin-top: 20px; font-weight: bold; text-shadow: 0 0 10px #ff3366;">
+      រីករាយថ្ងៃកំណើតណា៎ ម្ចាស់បេះដូងរបស់បង! ❤️
+    </p>
+    <p style="color: #ffb3d9; padding: 0 20px; font-size: 16px; line-height: 1.5; text-shadow: 0 0 5px #ffb3d9;">
+      ក្នុងថ្ងៃពិសេសនេះ បងសូមជូនពរឱ្យអូនមានក្ដីសុខបំផុត មានស្នាមញញឹមរាល់ថ្ងៃ សម្រស់កាន់តែស្រស់ស្អាត និងសម្រេចបានគ្រប់បំណងប្រាថ្នា។ អរគុណដែលតែងតែនៅក្បែរបង! 💕
+    </p>
+  </div> 
+
+  <div id="book-screen" style="display: none">
+    
+    <div id="book-message" class="book-text-top">កាដូពិសេសសម្រាប់មនុស្សពិសេសរបស់បង 🎁</div>
+
+    <div class="book-container">
+      <div class="book">
+        
+        <div class="page" id="page-1">
+          <div class="front cover-front">
+            <h2>Happy Birthday<br/>My Love 💖</h2>
+            <p>(Touch ត្រឡប់ទំព័រ 👉)</p>
+          </div>
+          <div class="back photo-page">
+            <img src="images/1.png" alt="Photo 1" class="page-img" />
+          </div>
+        </div>
+
+        <div class="page" id="page-2">
+          <div class="front photo-page">
+            <img src="images/2.png" alt="Photo 2" class="page-img" />
+          </div>
+          <div class="back photo-page">
+            <img src="images/3.png" alt="Photo 3" class="page-img" />
+          </div>
+        </div>
+
+        <div class="page" id="page-2">
+          <div class="front photo-page">
+            <img src="images/4.png" alt="Photo 2" class="page-img" />
+          </div>
+          <div class="back photo-page">
+            <img src="images/5.png" alt="Photo 3" class="page-img" />
+          </div>
+        </div>
+
+        <div class="page" id="page-2">
+          <div class="front photo-page">
+            <img src="images/6.png" alt="Photo 2" class="page-img" />
+          </div>
+          <div class="back photo-page">
+            <img src="images/7.png" alt="Photo 3" class="page-img" />
+          </div>
+        </div>
+
+        <div class="page" id="page-2">
+          <div class="front photo-page">
+            <img src="images/8.png" alt="Photo 2" class="page-img" />
+          </div>
+          <div class="back photo-page">
+            <img src="images/9.png" alt="Photo 3" class="page-img" />
+          </div>
+        </div>
+
+        <div class="page" id="page-3">
+          <div class="front photo-page">
+            <img src="images/10.png" alt="Photo 4" class="page-img" />
+          </div>
+          <div class="back cover-back">
+            <h2>LEAK CHOLLANA! 🎉</h2>
+            <p style="font-size: 16px; margin-bottom: 10px;">បងសន្យានឹងមើលថែអូនឱ្យល្អបំផុត 🥰</p>
+            <p>I Love You 3000 ❤️</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- <div id="heart-climax-screen" style="display: none;">
+    <div class="heart-gallery-container">
+      <img src="images/1.png" class="gallery-img pos-1" />
+      <img src="images/2.png" class="gallery-img pos-2" />
+      <img src="images/3.png" class="gallery-img pos-3" />
+      <img src="images/4.png" class="gallery-img pos-4" />
+      <img src="images/5.png" class="gallery-img pos-5" />
+      <img src="images/6.png" class="gallery-img pos-6" />
+      <img src="images/7.png" class="gallery-img pos-7" />
+      <img src="images/8.png" class="gallery-img pos-8" />
+      <img src="images/9.png" class="gallery-img pos-9" />
+      <img src="images/10.png" class="gallery-img pos-10" />
+      
+      <div class="center-couple">
+        <img src="images/couple.png" alt="Our Memory" />
+      </div>
+    </div>
+    <h2 class="climax-text">អរគុណដែលកើតមកជាមនុស្សពិសេសរបស់បង ❤️</h2>
+  </div> -->
+  <!-- ================================================= -->
+  <!-- វគ្គទី ៤: ផ្ទាំងផ្គុំរូបបេះដូង (ច្រើនរូប) និង Effect ហោះ -->
+  <!-- ================================================= -->
+  <div id="heart-climax-screen" style="display: none;">
+    
+    <!-- កន្លែងសម្រាប់ឱ្យមេអំបៅ ផ្កាយ និងបេះដូងតូចៗហោះ -->
+    <div id="floating-particles-container"></div>
+
+    <div class="heart-gallery-container" id="heart-gallery-container">
+      <!-- រូបភាព ៤០-៥០ សន្លឹកនឹងត្រូវបានបង្កើតដោយ JavaScript នៅទីនេះ -->
+      
+      <!-- រូបគូស្នេហ៍នៅកណ្តាលបេះដូង -->
+      <div class="center-couple">
+        <img src="images/couple.png" alt="Our Memory" />
+      </div>
+    </div>
+    
+    <h2 class="climax-text">អរគុណដែលកើតមកជាមនុស្សពិសេសរបស់បង ❤️</h2>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
